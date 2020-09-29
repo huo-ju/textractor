@@ -3,6 +3,7 @@ package textractor
 import (
 	"regexp"
 	"strings"
+    "fmt"
 
 	"github.com/PuerkitoBio/goquery"
 )
@@ -38,5 +39,8 @@ func findHtag(content *goquery.Selection) (string, bool) {
 	if htag.Length() > 0 {
 		return htag.Eq(0).Text(), true
 	}
-	return findHtag(parent)
+    if parent.Length() > 0 {
+	    return findHtag(parent)
+    }
+    return "",false
 }
