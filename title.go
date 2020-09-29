@@ -3,8 +3,6 @@ package textractor
 import (
 	"regexp"
 	"strings"
-    "fmt"
-
 	"github.com/PuerkitoBio/goquery"
 )
 
