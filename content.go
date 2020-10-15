@@ -94,7 +94,7 @@ func calcTextDensity(s *goquery.Selection) textDensity {
 func getAllTiText(s *goquery.Selection) []string {
 	var result []string
 	for _, v := range iterator(s) {
-        if len(v) > 0 {
+        if len(v.Nodes) > 0 {
 		    if v.Get(0).Type == html.TextNode {
 			    text := v.Text()
 			    text = regexp.MustCompile(`/[\n\r]/g`).ReplaceAllString(text, " ")
