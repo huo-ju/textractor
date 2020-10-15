@@ -94,15 +94,17 @@ func calcTextDensity(s *goquery.Selection) textDensity {
 func getAllTiText(s *goquery.Selection) []string {
 	var result []string
 	for _, v := range iterator(s) {
-		if v.Get(0).Type == html.TextNode {
-			text := v.Text()
-			text = regexp.MustCompile(`/[\n\r]/g`).ReplaceAllString(text, " ")
-			text = regexp.MustCompile(`/\s{1,}/g`).ReplaceAllString(text, " ")
-			text = strings.TrimSpace(text)
-			if len(text) > 0 {
-				result = append(result, text)
-			}
-		}
+        if len(v) > 0 {
+		    if v.Get(0).Type == html.TextNode {
+			    text := v.Text()
+			    text = regexp.MustCompile(`/[\n\r]/g`).ReplaceAllString(text, " ")
+			    text = regexp.MustCompile(`/\s{1,}/g`).ReplaceAllString(text, " ")
+			    text = strings.TrimSpace(text)
+			    if len(text) > 0 {
+			        result = append(result, text)
+			    }
+		    }
+        }
 	}
 	return result
 }
